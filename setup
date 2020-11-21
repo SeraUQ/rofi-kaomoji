@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+
+KAOMOJI_PATH="$HOME/.config/kaomoji_list"
+
+
+cp -v kaomoji_list $KAOMOJI_PATH

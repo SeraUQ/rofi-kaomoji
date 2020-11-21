@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+file="$HOME/.config/kaomoji_list"
+rofi_theme="-theme /usr/share/rofi/themes/arthur.rasi"
+
+category="$(grep -oi "[^ ]\+$" $file |uniq)"
+cat="$(echo "$category" | rofi -dmenu -i $rofi_theme)"
+
+kaomoji="$(grep $cat $file |sed "s/ $cat//g"|rofi -dmenu -i $rofi_theme)"
+
+echo $kaomoji | xclip -selection clipboard
