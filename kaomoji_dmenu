@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+file="$HOME/.config/kaomoji_list"
+
+category="$(grep -oi "[^ ]\+$" $file | uniq)"
+cat="$(echo "$category" | dmenu)"
+
+kaomoji="$(grep $cat $file |sed "s/ $cat//g" | dmenu)"
+
+echo $kaomoji | xclip -selection clipboard
