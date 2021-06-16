@@ -3,8 +3,8 @@
 file="$HOME/.config/kaomoji_list"
 
 category="$(grep -oi "[^ ]\+$" $file | uniq)"
-cat="$(echo "$category" | dmenu)"
+cat="$(echo "$category" | dmenu -l 6 -b -i)"
 
-kaomoji="$(grep $cat $file |sed "s/ $cat//g" | dmenu)"
+kaomoji="$(grep $cat $file |sed "s/ $cat//g" | dmenu -l 6 -b -i)"
 
 echo $kaomoji | xclip -selection clipboard
